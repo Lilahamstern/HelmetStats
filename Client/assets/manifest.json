@@ -1,0 +1,149 @@
+{
+  "manifest_version": 2,
+  "type": "WebApp",
+  "meta": {
+    "name": "Helmet Stats",
+    "version": "0.0.4",
+    "minimum-overwolf-version": "0.120.0",
+    "author": "Lilahamstern",
+    "icon": "logo.png",
+    "icon_gray": "IconMouseNormal.png",
+    "launcher_icon": "desktop-icon.ico",
+    "description": "Helmet Stats, is an application that will show you the stas of your lates matches, your stats from the last week and the stats since you downloaded Helmet Stats."
+  },
+  "permissions": [
+    "Hotkeys",
+    "Clipboard",
+    "FileSystem"
+  ],
+  "data": {
+    "hotkeys": {
+      "toggle_main_window": {
+        "title": "Open main app",
+        "action-type": "custom",
+        "default": "Shift+F9"
+      },
+      "toggle_application": {
+        "title": "Toggle application",
+        "action-type": "toggle",
+        "default": "Shift+F10"
+      },
+      "toggle_summary": {
+        "title": "Toggle summary",
+        "action-type": "custom",
+        "default": "Shift+F8"
+      }
+    },
+    "extra-objects": {
+      "simple-io-plugin": {
+        "file": "plugins/simple-io-plugin.dll",
+        "class": "overwolf.plugins.SimpleIOPlugin"
+      }
+    },
+    "game_targeting": {
+      "type": "dedicated",
+      "game_ids": [10906]
+    },
+    "launch_events": [{
+      "event": "GameLaunch",
+      "event_data": {
+        "game_ids": [10906],
+        "wait_for_stable_framerate": 30
+      },
+      "start_minimized": true
+    }],
+    "game_events": [10906],
+    "start_window": "background",
+    "windows": {
+      "main": {
+        "file": "windows/main/main.html",
+        "transparent": true,
+        "resizable": false,
+        "native_window": true,
+        "desktop_only": true,
+        "show_in_taskbar": true,
+        "size": {
+          "width": 1200,
+          "height": 700
+        },
+        "min_size": {
+          "width": 1200,
+          "height": 700
+        },
+        "max_size": {
+          "width": 1250,
+          "height": 750
+        }
+      },
+      "background": {
+        "file": "windows/background/background.html",
+        "native_window": true,
+        "desktop_only": true,
+        "background_optimization": false,
+        "is_background_page": true,
+        "transparent": true,
+        "resizable": false,
+        "show_in_taskbar": false,
+        "size": {
+          "width": 100,
+          "height": 100
+        },
+        "grab_keyboard_focus": false
+      },
+      "settings": {
+        "file": "windows/settings/settings.html",
+        "transparent": true,
+        "resizable": true,
+        "size": {
+          "width": 500,
+          "height": 300
+        },
+        "min_size": {
+          "width": 500,
+          "height": 300
+        }
+      },
+      "summary": {
+        "file": "windows/summary/summary.html",
+        "transparent": true,
+        "resizable": true,
+        "show_in_taskbar": false,
+        "size": {
+          "width": 800,
+          "height": 400
+        },
+        "min_size": {
+          "width": 800,
+          "height": 400
+        }
+      },
+      "in_game": {
+        "file": "windows/in-game/in-game.html",
+        "transparent": true,
+        "resizable": true,
+        "size": {
+          "width": 620,
+          "height": 600
+        },
+        "min_size": {
+          "width": 620,
+          "height": 600
+        }
+      }
+    },
+    "externally_connectable": {
+      "matches": [
+        "http://*.overwolf.com",
+        "https://*.overwolf.com",
+        "https://*.google-analytics.com",
+        "http://*.google-analytics.com",
+        "https://www.googleapis.com"
+      ]
+    },
+    "developer": {
+      "enable_auto_refresh": true,
+      "reload_delay": 1000,
+      "filter": "*.*"
+    }
+  }
+}

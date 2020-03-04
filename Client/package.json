@@ -1,0 +1,30 @@
+{
+  "name": "Helmet Stats",
+  "version": "0.0.1",
+  "description": "PUBG dev challenge app written in TypeScript",
+  "main": "./dist/main.js",
+  "scripts": {
+    "start": "npm run-script build",
+    "build": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lilahamstern",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/request": "^2.48.1",
+    "browserify": "^16.2.3",
+    "gulp": "^4.0.0",
+    "gulp-typescript": "^5.0.0",
+    "tsify": "^4.0.1",
+    "typescript": "^3.3.3",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "@types/bluebird": "^3.5.26",
+    "bluebird": "^3.5.3",
+    "gulp-sass": "^4.0.2",
+    "gulp-watch": "^5.0.1",
+    "node-http-ping": "^0.3.1",
+    "request": "^2.88.0"
+  }
+}

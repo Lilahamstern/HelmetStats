@@ -1,0 +1,543 @@
+// Font Imports
+@import url('https://fonts.googleapis.com/css?family=Teko');
+
+
+// Global settings 
+
+* {
+	font-family: 'Teko', sans-serif;
+}
+
+.unactive {
+	display: none;
+}
+
+.status-bad {
+	color: #F95053;
+}
+
+.status-okay {
+	color: #FACF53;
+}
+
+.status-good {
+	color: #B0DC64;
+}
+
+// reset
+button {
+	padding: 0;
+	border: none;
+}
+
+button:focus {
+	outline: none;
+}
+
+// colors
+$redMain: #811616;
+
+$red01: rgb(194, 25, 19);
+$red02: rgb(255, 0, 0);
+
+$gray019: rgb(19, 19, 19);
+$gray039: rgb(39, 39, 39);
+$gray079: rgb(79, 79, 79);
+$gray130: rgb(130, 130, 130);
+$gray168: rgb(168, 168, 168);
+$gray222: rgb(222, 222, 222);
+$gray246: rgb(246, 246, 246);
+
+// dark theme
+$dark-background_main: $gray019;
+$dark-background_secondary: $gray039;
+
+$dark-foreground_main: $gray168;
+$dark-foreground_main-hover: $gray222;
+
+// light theme
+$light-background_main: $gray246;
+$light-background_secondary: $gray222;
+
+$light-foreground_main: $gray019;
+$light-foreground_secondary: $gray079;
+$light-foreground_third: $gray130;
+
+// icons
+.icon {
+	position: relative;
+	width: var(--size, 30px);
+	height: var(--size, 30px);
+	transition: .15s;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.unselectable {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.toggle-icons {
+	svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+	}
+
+	svg:nth-of-type(1) {
+		opacity: 1;
+	}
+
+	svg:nth-of-type(2) {
+		opacity: 0;
+	}
+}
+
+.toggle-icons.toggled {
+	svg:nth-of-type(1) {
+		opacity: 0;
+	}
+
+	svg:nth-of-type(2) {
+		opacity: 1;
+	}
+}
+
+// header
+.app-header {
+	position: relative;
+	display: flex;
+	height: 100px;
+	background-color: $dark-background_main;
+	opacity: 0.9;
+	border-bottom: 2px rgba(129, 22, 22, 0.65)solid;
+}
+
+.window-controls-group {
+	display: flex;
+
+	--color: #{$dark-foreground_main};
+	--color-hover: #{$dark-foreground_main-hover};
+	--bg-color-hover: #{$dark-background_secondary};
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.window-control {
+	color: var(--color);
+	background-color: transparent;
+
+	&:hover,
+	&:active {
+		color: var(--color-hover);
+		background-color: var(--bg-color-hover);
+	}
+}
+
+.window-control-close {
+	--color-hover: #{$gray222};
+	--bg-color-hover: #{$red01};
+}
+
+.light-theme {
+	background-color: $light-background_main;
+
+	.window-controls-group {
+		--color: #{$light-foreground_third};
+		--color-hover: #{$light-foreground_secondary};
+		--bg-color-hover: #{$light-background_secondary};
+	}
+}
+
+// Global
+body {
+	background-image: url("./bg.png");
+	background-size: cover;
+	color: $light-foreground_main;
+	margin: 0px;
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+	min-height: 100vh;
+}
+
+main {
+	flex: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+
+	>*+* {
+		margin-top: 10px;
+	}
+}
+
+
+.main {
+	position: relative;
+
+	.app-title {
+		color: white;
+		text-align: center;
+		font-size: 1.5rem;
+		margin: 10px 0px 0px 10px;
+		width: 250px;
+		height: 40px;
+
+		#appTitle {
+			margin: 0;
+			text-transform: uppercase;
+
+			span {
+				font-size: 1.2rem;
+				text-transform: capitalize;
+			}
+		}
+
+		img {
+			margin: 0;
+			float: left;
+		}
+	}
+
+	.navbar {
+		width: 50%;
+		height: 50px;
+		position: absolute;
+		bottom: 0;
+		margin-left: 60px;
+
+		ul {
+			list-style-type: none;
+			margin: 0 auto;
+			padding: 0;
+		}
+
+		li {
+			vertical-align: top;
+			display: inline-block;
+		}
+
+		li a {
+			display: inline-block;
+			color: white;
+			text-align: center;
+			font-size: 1.7rem;
+			padding: 5px 16px;
+			text-decoration: none;
+			margin: auto;
+		}
+
+		li a:hover {
+			color: $redMain;
+		}
+
+		.active {
+			border-bottom: 2px #b81e1e solid;
+			color: #b81e1e;
+		}
+	}
+}
+
+.in-game {
+	background-color: transparent;
+}
+
+.settings {
+	font-family: Arial, Helvetica, sans-serif;
+	color: black;
+}
+
+.views {
+	width: 100%;
+	height: 598px;
+	margin: 0;
+	padding: 0;
+	top: 0;
+	left: 0;
+	position: relative;
+	background: rgba(0, 0, 0, 0.802);
+	border: 1px solid $redMain;
+	width: 1150px;
+	max-height: 550px;
+	box-shadow: 0 0 20px $redMain;
+	margin: auto;
+}
+
+#connectView {
+	color: white;
+	width: 400px;
+	display: block;
+	margin: 70px auto;
+	text-align: center;
+	letter-spacing: 0.03rem;
+
+	h1 {
+		font-size: 2rem;
+	}
+
+	#info {
+		font-size: 1.3rem;
+	}
+
+	#inputArea {
+		position: relative;
+		display: block;
+		margin: 0 auto;
+		width: 53%;
+
+		input {
+			width: 100%;
+			height: 1.6rem;
+			font-size: 1.5rem;
+			padding: 5px;
+			background: transparent;
+			border: none;
+			color: white;
+			border-bottom: 2px solid $redMain;
+			letter-spacing: 0.05rem;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		svg {
+			position: absolute;
+			top: 2px;
+			right: 0;
+			height: 1.8rem;
+
+			&:hover {
+				path {
+					fill: #811616
+				}
+
+				cursor: pointer;
+			}
+
+			path {
+				fill: white;
+
+				&:hover {
+					fill: #811616;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.error {
+		position: absolute;
+		left: 0;
+		color: #e00e0e;
+		font-size: 1.2rem;
+		margin: 0;
+		margin-top: 10px;
+	}
+
+	.success {
+		position: absolute;
+		left: 0;
+		color: #B0DC64;
+		font-size: 1.2rem;
+		margin: 0;
+		margin-top: 10px;
+	}
+
+	button {
+		display: block;
+		margin: 20px auto;
+		margin-top: 90px;
+		padding: 0px 10px 0px 10px;
+		height: 2rem;
+		font-size: 1.4rem;
+		color: white;
+		background: transparent;
+		border: none;
+		letter-spacing: 0.1rem;
+
+		&:hover {
+			cursor: pointer;
+			color: $redMain;
+		}
+	}
+}
+
+#loginView {
+	color: white;
+	display: block;
+	margin: 60px auto;
+	text-align: center;
+	letter-spacing: 0.03rem;
+
+	.pitch {
+		color: white;
+		font-size: 1.3rem;
+		width: 470px;
+		margin: 50px auto;
+		letter-spacing: 0.03rem;
+		text-align: center;
+
+		p {
+			margin: 0;
+		}
+
+		.headline {
+			font-size: 1.6rem !important;
+		}
+
+		.appname {
+			font-size: 1.5rem;
+			color: $redMain;
+		}
+
+		.ending {
+			color: $redMain;
+		}
+	}
+
+	h1 {
+		font-size: 1rem;
+	}
+
+	#loading {
+		height: 70px;
+		width: 70px;
+		background: #811616;
+		border-radius: 50%;
+		display: block;
+		margin: 0 auto;
+	}
+
+	#message {
+		font-size: 1.4rem;
+
+		#connects {
+			color: $redMain;
+			font-size: 1.6rem;
+
+			&:hover {
+				cursor: pointer;
+				color: #c02323;
+			}
+		}
+	}
+}
+
+#homeView {
+	letter-spacing: 0.05rem;
+	color: white;
+
+	#welcome {
+		margin-top: 60px;
+		letter-spacing: 0.07rem;
+
+		#appname {
+			color: $redMain;
+		}
+	}
+
+	.info {
+		display: block;
+		width: 280px;
+
+		h1 {
+			border-bottom: 2px solid $redMain;
+			letter-spacing: 0.145rem;
+			text-align: center;
+		}
+
+		table {
+			width: 100%;
+			color: white;
+
+			tbody {
+				text-align: left;
+				letter-spacing: 1.1px;
+				font-size: 1.3rem;
+
+				.data {
+					color: $redMain;
+				}
+
+			}
+		}
+	}
+
+	#scInfo {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 100px;
+		padding: 20px 40px;
+		height: 330px;
+
+		kbd {
+			font-size: 1.2rem;
+			width: 50%;
+			margin: 0px 0.1em;
+			padding: 0.1em 0.6em;
+			border-radius: 3px;
+			text-align: center;
+			border: 1px solid rgb(204, 204, 204);
+			color: rgb(51, 51, 51);
+			display: inline-block;
+			box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px #ffffff;
+			background-color: rgb(247, 247, 247);
+			text-shadow: 0 1px 0 #fff;
+		}
+	}
+
+	#playerStatics {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 100px;
+		padding: 20px 40px;
+		height: 330px;
+	}
+
+	#appStatics {
+		width: 250px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		margin: 100px auto;
+		padding: 20px 40px;
+		height: 330px;
+	}
+
+	.social {
+		margin-right: 115px;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		font-size: 1.5rem;
+		margin-bottom: 40px;
+
+		p {
+			padding-right: 20px;
+			text-decoration: underline;
+			letter-spacing: 0.1rem;
+			float: left;
+
+			&:hover {
+				color: $redMain !important;
+				cursor: pointer;
+			}
+		}
+	}
+}
